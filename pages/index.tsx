@@ -1,6 +1,7 @@
 import Head from "next/head";
 import Image from "next/image";
 import { Inter } from "@next/font/google";
+import Link from "next/link";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -25,7 +26,34 @@ export default function Home() {
       <main
         className={`${inter.variable} font-sans`}
       >
-        <div className="mt-20 flex flex-col items-center"></div>
+        <div className="mx-auto mt-20 grid h-96 w-11/12 grid-cols-2">
+          <div className="flex flex-col justify-center gap-2 space-y-2 p-2">
+            <h1 className="text-3xl font-medium">
+              Meet your Modern
+            </h1>
+            <h2 className="font-semibold text-light-primary">
+              Note Taking App
+            </h2>
+            <p className="font-medium">
+              manage your daily tasks and workflow
+              more efficiently
+            </p>
+            <div className="">
+              <button className="bg-light-primary p-2 px-3 text-white">
+                Join Now
+              </button>
+            </div>
+            <Link
+              className="text-light-primary"
+              href=""
+            >
+              Already have an account ?
+            </Link>
+          </div>
+          <div className="relative">
+            <Image src="/notes.svg" alt="" fill />
+          </div>
+        </div>
       </main>
     </>
   );
