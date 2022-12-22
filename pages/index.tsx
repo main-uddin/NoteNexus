@@ -26,7 +26,7 @@ export default function Home() {
       <main
         className={`${inter.variable} font-sans`}
       >
-        <div className="mx-auto mt-20 grid h-96 w-11/12 grid-cols-2">
+        <div className="mx-auto mt-20 grid h-fit w-11/12 sm:grid-cols-1 lg:grid-cols-2">
           <div className="flex flex-col justify-center gap-2 space-y-2 p-2">
             <h1 className="text-3xl font-medium">
               Meet your Modern
@@ -50,7 +50,7 @@ export default function Home() {
               Already have an account ?
             </Link>
           </div>
-          <div className="relative">
+          <div className="relative aspect-video object-cover">
             <Image src="/notes.svg" alt="" fill />
           </div>
         </div>
