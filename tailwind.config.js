@@ -9,6 +9,11 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
+    screens: {
+      sm: "100px",
+      md: "500px",
+      lg: "1000px",
+    },
     extend: {
       fontFamily: {
         sans: [
@@ -18,8 +23,8 @@ module.exports = {
       },
       colors: {
         light: {
-          background: "white",
-          foreground: "#FFFFFF",
+          background: "#f1f5f9",
+          foreground: "#f8fafc",
           primary: "#5348C7",
           text: "242331",
         },

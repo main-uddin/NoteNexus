@@ -7,9 +7,7 @@ const SidebarLayout = ({
   children: React.ReactElement;
 }) => {
   return (
-    <div
-      className={`mt-16 grid min-h-screen grid-cols-12 gap-5 border border-gray-600 bg-light-background`}
-    >
+    <div>
       <div className="col-span-2">
         <Sidebar />
       </div>
