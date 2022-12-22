@@ -1,12 +1,6 @@
 import Head from "next/head";
 import Image from "next/image";
-import { Nunito } from "@next/font/google";
 import Link from "next/link";
-
-const nunito = Nunito({
-  subsets: ["latin"],
-  variable: "--font-nunito",
-});
 
 export default function Home() {
   return (
@@ -23,9 +17,7 @@ export default function Home() {
         />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main
-        className={`${nunito.variable} font-sans`}
-      >
+      <main>
         <div className="mx-auto mt-20 grid h-fit w-11/12 gap-16 sm:grid-cols-1 lg:grid-cols-2">
           <div className="flex flex-col justify-center gap-2 space-y-3 sm:px-5 lg:px-14">
             <div className="space-y-4">
