@@ -27,7 +27,7 @@ export default function Home() {
         className={`${nunito.variable} font-sans`}
       >
         <div className="mx-auto mt-20 grid h-fit w-11/12 gap-16 sm:grid-cols-1 lg:grid-cols-2">
-          <div className="flex flex-col justify-center gap-2 space-y-5 sm:px-5 lg:px-14">
+          <div className="flex flex-col justify-center gap-2 space-y-3 sm:px-5 lg:px-14">
             <div className="space-y-4">
               <div className="">
                 <h1 className="text-4xl font-extrabold text-[#242331]">
