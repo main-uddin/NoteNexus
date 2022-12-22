@@ -1,5 +1,5 @@
 import Sidebar from "./Sidebar";
-import Styles from "../styles/Sidebar.module.css";
+import Styles from "../styles/SidebarLayout.module.css";
 
 const SidebarLayout = ({
   children,
@@ -7,8 +7,10 @@ const SidebarLayout = ({
   children: React.ReactElement;
 }) => {
   return (
-    <div>
-      <div className="col-span-2">
+    <div
+      className={`${Styles.container} mt-16 grid grid-cols-12`}
+    >
+      <div className="sticky top-20 col-span-2 border">
         <Sidebar />
       </div>
       <div className="col-span-10">
