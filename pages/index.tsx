@@ -25,12 +25,7 @@ export default function Home() {
       <main
         className={`${inter.variable} font-sans`}
       >
-        <div className="mt-20 flex flex-col items-center">
-          <h1 className="text-2xl">
-            Hello World
-          </h1>
-          <p>this is where the magic happens</p>
-        </div>
+        <div className="mt-20 flex flex-col items-center"></div>
       </main>
     </>
   );

@@ -16,6 +16,13 @@ module.exports = {
           ...fontFamily.sans,
         ],
       },
+      colors: {
+        light: {
+          background: "#F7F7F7",
+          foreground: "#FFFFFF",
+          primary: "#5348C7",
+        },
+      },
     },
   },
   plugins: [],
