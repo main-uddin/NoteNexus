@@ -48,9 +48,9 @@ export default function Home() {
             <div className="flex h-16 items-center gap-4 px-2">
               <Link
                 className="w-fit rounded-md border bg-light-primary py-2 px-5 font-medium text-white"
-                href="/login"
+                href="/signup"
               >
-                Login
+                Join Now
               </Link>
               <Link
                 className="rounded-md border border-light-primary py-2 px-5 font-medium text-light-primary"
