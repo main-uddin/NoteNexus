@@ -5,7 +5,7 @@ import {
 } from "react-icons/md";
 const Navbar = (): React.ReactElement => {
   return (
-    <nav className="fixed left-0 right-0 top-0 flex h-16 items-center justify-between border-b border-gray-300 bg-light-foreground shadow-sm sm:px-5 lg:px-10">
+    <nav className="fixed left-0 right-0 top-0 z-40 flex h-16 items-center justify-between border-b border-gray-300 bg-light-foreground shadow-sm sm:px-5 lg:px-10">
       <div className="">
         <Link href="/">
           <span className="text-2xl font-bold">
