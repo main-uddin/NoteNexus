@@ -45,16 +45,16 @@ export default function Home() {
                 </p>
               </div>
             </div>
-            <div className="flex h-16 flex-col gap-4 px-2">
+            <div className="flex h-16 items-center gap-4 px-2">
               <Link
                 className="w-fit rounded-md border bg-light-primary py-2 px-5 font-medium text-white"
-                href=""
+                href="/login"
               >
                 Login
               </Link>
               <Link
-                className="font-medium text-light-primary"
-                href=""
+                className="rounded-md border border-light-primary py-2 px-5 font-medium text-light-primary"
+                href="/signup"
               >
                 Already had an account?
               </Link>
