@@ -10,7 +10,7 @@ const Sidebar = () => {
   const router = useRouter();
 
   return (
-    <ul className="h-full w-full space-y-3 bg-light-foreground">
+    <ul className="sticky top-16 h-fit w-full space-y-3 bg-light-foreground">
       <Link href="/notes">
         <li className="flex items-center gap-2 p-4 text-lg font-normal hover:cursor-pointer hover:bg-light-background">
           <MdNotes /> Notes
