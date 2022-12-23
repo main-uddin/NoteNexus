@@ -14,7 +14,7 @@ import SearchBar from "../components/SearchBar";
 
 const NotesPage = (): React.ReactElement => {
   return (
-    <div className="mx-auto mt-20 w-2/5 space-y-5">
+    <div className="mx-auto mt-20 space-y-5 md:w-4/5 lg:w-2/5">
       <SearchbarFilter />
       <div className="space-y-4">
         <h1 className="text-center font-semibold">

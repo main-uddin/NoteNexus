@@ -9,7 +9,7 @@ import {
 } from "react-icons/md";
 import { useState } from "react";
 import ColorPallete from "./ColorPallete";
-import TagInput from "./TagInput";
+import TagInput from "./LabelInput";
 
 const NotesCard = () => {
   const [togglePin, setTogglePin] =

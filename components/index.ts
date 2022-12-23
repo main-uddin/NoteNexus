@@ -4,7 +4,7 @@ import Navbar from "./Navbar";
 import SearchbarFilter from "./SearchbarFilter";
 import Sidebar from "./Sidebar";
 import SidebarLayout from "./SidebarLayout";
-import TagInput from "./TagInput";
+import TagInput from "./LabelInput";
 
 export {
   Navbar,
