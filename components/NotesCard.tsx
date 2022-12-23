@@ -9,12 +9,16 @@ import {
 } from "react-icons/md";
 import { useState } from "react";
 import ColorPallete from "./ColorPallete";
+import TagInput from "./TagInput";
 
 const NotesCard = () => {
   const [togglePin, setTogglePin] =
     useState<boolean>(false);
 
   const [toggleColor, setToggleColor] =
+    useState<boolean>(false);
+
+  const [toggleTagInput, setToggleTagInput] =
     useState<boolean>(false);
 
   return (
@@ -77,8 +81,14 @@ const NotesCard = () => {
             <MdColorLens size={25} />
             {toggleColor && <ColorPallete />}
           </span>
-          <span className="rounded-md p-1 hover:cursor-pointer hover:bg-light-background">
+          <span
+            className="relative rounded-md p-1 hover:cursor-pointer hover:bg-light-background"
+            onClick={() => {
+              setToggleTagInput((prev) => !prev);
+            }}
+          >
             <MdOutlineLabel size={25} />
+            {toggleTagInput && <TagInput />}
           </span>
           <span className="rounded-md p-1 hover:cursor-pointer hover:bg-light-background">
             <MdArchive size={25} />

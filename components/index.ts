@@ -4,6 +4,8 @@ import Navbar from "./Navbar";
 import SearchbarFilter from "./SearchbarFilter";
 import Sidebar from "./Sidebar";
 import SidebarLayout from "./SidebarLayout";
+import TagInput from "./TagInput";
+
 export {
   Navbar,
   Layout,
@@ -11,4 +13,5 @@ export {
   SidebarLayout,
   SearchbarFilter,
   ColorPallete,
+  TagInput,
 };
