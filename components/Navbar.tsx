@@ -1,5 +1,6 @@
 import Link from "next/link";
 import {
+  MdAdd,
   MdDarkMode,
   MdLightMode,
 } from "react-icons/md";
@@ -13,7 +14,10 @@ const Navbar = (): React.ReactElement => {
           </span>
         </Link>
       </div>
-      <ul>
+      <ul className="flex gap-5">
+        <li className="rounded-md border border-gray-300 bg-light-primary p-1 text-white hover:cursor-pointer">
+          <MdAdd size={25} />
+        </li>
         {false ? (
           <li className="rounded-md border border-gray-300 p-1 hover:cursor-pointer hover:bg-violet-100">
             <MdDarkMode size={25} />
