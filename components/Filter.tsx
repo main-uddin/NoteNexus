@@ -26,7 +26,7 @@ const Filter = (): React.ReactElement => {
     filterByLabel,
     sort_by_time,
     filter_by_priority,
-    labels,
+    filter_by_label,
   } = useFilterStore((store) => store);
 
   return (
@@ -87,10 +87,14 @@ const Filter = (): React.ReactElement => {
               type="checkbox"
               name=""
               id=""
-              checked={x.name === labels}
+              checked={filter_by_label.includes(
+                x.name
+              )}
               onClick={() => {
-                if (x.name === labels) {
-                  filterByLabel("");
+                if (
+                  filter_by_label.includes(x.name)
+                ) {
+                  filterByLabel(x.name);
                 } else {
                   filterByLabel(x.name);
                 }
