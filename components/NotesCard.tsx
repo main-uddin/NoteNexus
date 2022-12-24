@@ -10,8 +10,13 @@ import {
 import { useState } from "react";
 import ColorPallete from "./ColorPallete";
 import TagInput from "./LabelInput";
+import { Note } from "../types";
 
-const NotesCard = () => {
+const NotesCard = ({
+  noteData,
+}: {
+  noteData: Note;
+}) => {
   const [togglePin, setTogglePin] =
     useState<boolean>(false);
 
@@ -44,20 +49,16 @@ const NotesCard = () => {
       )}
       <div className="space-y-3">
         <h1 className="text-2xl font-semibold">
-          Note Title
+          {noteData.title}
         </h1>
-        <p>
-          Lorem ipsum dolor sit amet consectetur
-          adipisicing elit. Perspiciatis,
-          blanditiis!
-        </p>
+        <p>{noteData.note}</p>
 
         <div className="flex gap-3">
           <span className="rounded-md border border-gray-400 bg-light-background p-1 px-2 text-sm">
-            LABEL
+            {noteData.label}
           </span>
           <span className="rounded-md border border-gray-400 bg-light-background p-1 px-2 text-sm">
-            PRIORITY
+            {noteData.priority}
           </span>
         </div>
       </div>
@@ -65,7 +66,7 @@ const NotesCard = () => {
       <div className="absolute left-0 right-0 bottom-0 flex h-10 items-center justify-between border-t border-gray-300 px-3">
         <div className="">
           <span className="font-semibold">
-            Created At: 21/22/5
+            Created At: {noteData.createdAt}
           </span>
         </div>
         <div className="flex gap-4">

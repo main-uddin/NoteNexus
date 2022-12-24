@@ -11,6 +11,7 @@ import {
 } from "../components";
 import NotesCard from "../components/NotesCard";
 import SearchBar from "../components/SearchBar";
+import { notesData } from "../data";
 
 const NotesPage = (): React.ReactElement => {
   return (
@@ -21,14 +22,20 @@ const NotesPage = (): React.ReactElement => {
           Pinned Notes
         </h1>
         <div className="space-y-5">
-          <NotesCard />
+          {notesData.slice(0, 1).map((x) => (
+            <NotesCard noteData={x} />
+          ))}
         </div>
       </div>
       <div className="space-y-4">
         <h1 className="text-center font-semibold">
           Others Notes
         </h1>
-        <div className="space-y-5"></div>
+        <div className="space-y-5">
+          {notesData.map((x) => (
+            <NotesCard noteData={x} />
+          ))}
+        </div>
       </div>
     </div>
   );
