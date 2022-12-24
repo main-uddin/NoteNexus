@@ -20,6 +20,7 @@ const NotesPage = (): React.ReactElement => {
     filter_by_priority,
     sort_by_time,
     filter_by_label,
+    filter_by_search,
   } = useFilterStore((store) => store);
 
   const filterByPrority = (notesData: Note[]) => {
@@ -68,6 +69,21 @@ const NotesPage = (): React.ReactElement => {
     }
   };
 
+  const filterBySearchKey = (
+    filter_by_search: string,
+    notesData: Note[]
+  ) => {
+    return notesData.filter(
+      (x) =>
+        x.note
+          .toLowerCase()
+          .includes(filter_by_search) ||
+        x.title
+          .toLowerCase()
+          .includes(filter_by_search)
+    );
+  };
+
   return (
     <div className="mx-auto mt-20 space-y-5 md:w-4/5 lg:w-2/5">
       <SearchbarFilter />
@@ -91,11 +107,14 @@ const NotesPage = (): React.ReactElement => {
           Others Notes
         </h1>
         <div className="space-y-5">
-          {filterByLabel(
-            filter_by_label,
-            sortByTime(
-              sort_by_time,
-              filterByPrority(notesData)
+          {filterBySearchKey(
+            filter_by_search,
+            filterByLabel(
+              filter_by_label,
+              sortByTime(
+                sort_by_time,
+                filterByPrority(notesData)
+              )
             )
           ).map((x) => (
             <NotesCard key={x.id} noteData={x} />

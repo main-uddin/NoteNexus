@@ -42,7 +42,9 @@ const useFilterStore = create<InitialState>(
       })),
 
     filterBySearch: (searchKey) =>
-      set({ filter_by_search: searchKey }),
+      set((state) => ({
+        filter_by_search: searchKey,
+      })),
   })
 );
 
