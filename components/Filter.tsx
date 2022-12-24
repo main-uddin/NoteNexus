@@ -7,9 +7,9 @@ const filterInitialState = {
     { id: "etw", name: "Old To New" },
   ],
   priority: [
+    { id: "uionm", name: "Choose Priority" },
     { id: "etweaw", name: "High" },
     { id: "etcr4w", name: "Medium" },
-    ,
     { id: "etf3tyw", name: "Low" },
   ],
   labels: [
