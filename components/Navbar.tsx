@@ -4,11 +4,17 @@ import {
   MdDarkMode,
   MdLightMode,
 } from "react-icons/md";
-import { useAuthStore } from "../store";
+import {
+  useAuthStore,
+  useDarkTheme,
+} from "../store";
 const Navbar = (): React.ReactElement => {
   const authStatus = useAuthStore(
     (store: any) => store.authStatus
   );
+
+  const { darkMode, toggleTheme } =
+    useDarkTheme();
 
   return (
     <nav className="fixed left-0 right-0 top-0 z-40 flex h-16 items-center justify-between border-b border-gray-300 bg-light-foreground shadow-sm sm:px-5 lg:px-10">
@@ -26,12 +32,18 @@ const Navbar = (): React.ReactElement => {
           </li>
         )}
 
-        {false ? (
-          <li className="rounded-md border border-gray-300 p-1 hover:cursor-pointer hover:bg-violet-100">
+        {darkMode ? (
+          <li
+            className="rounded-md border border-gray-300 p-1 transition-all hover:cursor-pointer hover:bg-violet-100"
+            onClick={toggleTheme}
+          >
             <MdDarkMode size={25} />
           </li>
         ) : (
-          <li className="rounded-md border border-gray-300 p-1 hover:cursor-pointer hover:bg-violet-100">
+          <li
+            className="rounded-md border border-gray-300 p-1 transition-all hover:cursor-pointer hover:bg-violet-100"
+            onClick={toggleTheme}
+          >
             <MdLightMode size={25} />
           </li>
         )}
