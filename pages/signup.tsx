@@ -5,10 +5,10 @@ import { useState } from "react";
 // import { LoadingSpinner } from "../components";
 // import { useNoAuthRedirect } from "../hooks";
 import { useAuthStore } from "../store";
-// import {
-//   initiateUserData,
-//   signupFunc,
-// } from "../services";
+import {
+  initiateUserData,
+  signupFunc,
+} from "../services";
 import { toast } from "react-hot-toast";
 
 type InitialState = {
@@ -57,17 +57,17 @@ const Signup = (): React.ReactElement => {
 
   const signupUser = async (): Promise<void> => {
     try {
-      // const uid = await signupFunc(
-      //   userData.email,
-      //   userData.password
-      // );
-      // await initiateUserData(
-      //   uid,
-      //   userData.email,
-      //   userData.firstname,
-      //   userData.lastname
-      // );
-      // addAuth(uid);
+      const uid = await signupFunc(
+        userData.email,
+        userData.password
+      );
+      await initiateUserData(
+        uid,
+        userData.email,
+        userData.firstname,
+        userData.lastname
+      );
+      addAuth(uid);
       router.push("/");
       toast.success(
         "user created successfully!",

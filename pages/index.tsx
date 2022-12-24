@@ -46,7 +46,7 @@ export default function Home() {
               </Link>
               <Link
                 className="rounded-md border border-light-primary py-2 px-5 font-medium text-light-primary"
-                href="/signup"
+                href="/login"
               >
                 Already had an account?
               </Link>

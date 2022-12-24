@@ -77,11 +77,6 @@ export {
   signupFunc,
   loginFunc,
   initiateUserData,
-  getCollectionData,
   getSingleDoc,
   signoutFunc,
-  addToWishlist,
-  removeFromWishlist,
-  addToCart,
-  removeFromCart,
 };
