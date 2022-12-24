@@ -32,7 +32,7 @@ export const notesData: Note[] = [
     archive: true,
     color: "gray",
     createdAt: 97000,
-    pinned: false,
+    pinned: true,
     priority: "Low",
     label: "Personal",
     trash: false,

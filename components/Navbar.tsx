@@ -7,6 +7,7 @@ import {
 import {
   useAuthStore,
   useDarkTheme,
+  useToggleNoteStore,
 } from "../store";
 const Navbar = (): React.ReactElement => {
   const authStatus = useAuthStore(
@@ -15,6 +16,10 @@ const Navbar = (): React.ReactElement => {
 
   const { darkMode, toggleTheme } =
     useDarkTheme();
+
+  const { openCreateNote } = useToggleNoteStore(
+    (store) => store
+  );
 
   return (
     <nav className="fixed left-0 right-0 top-0 z-40 flex h-16 items-center justify-between border-b border-gray-300 bg-light-foreground shadow-sm sm:px-5 lg:px-10">
@@ -26,8 +31,11 @@ const Navbar = (): React.ReactElement => {
         </Link>
       </div>
       <ul className="flex gap-5">
-        {authStatus && (
-          <li className="rounded-md border border-gray-300 bg-light-primary p-1 text-white hover:cursor-pointer">
+        {true && (
+          <li
+            className="rounded-md border border-gray-300 bg-light-primary p-1 text-white hover:cursor-pointer"
+            onClick={openCreateNote}
+          >
             <MdAdd size={25} />
           </li>
         )}

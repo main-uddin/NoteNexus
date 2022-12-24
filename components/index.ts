@@ -6,6 +6,7 @@ import Sidebar from "./Sidebar";
 import SidebarLayout from "./SidebarLayout";
 import TagInput from "./LabelInput";
 import Filter from "./Filter";
+import CreateNoteCard from "./CreateNoteCard";
 
 export {
   Navbar,
@@ -16,4 +17,5 @@ export {
   ColorPallete,
   TagInput,
   Filter,
+  CreateNoteCard,
 };
