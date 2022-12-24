@@ -75,7 +75,16 @@ const NotesPage = (): React.ReactElement => {
         <h1 className="text-center font-semibold">
           Pinned Notes
         </h1>
-        <div className="space-y-5"></div>
+        <div className="space-y-5">
+          {notesData
+            .filter((x) => x.pinned)
+            .map((x) => (
+              <NotesCard
+                key={x.id}
+                noteData={x}
+              />
+            ))}
+        </div>
       </div>
       <div className="space-y-4">
         <h1 className="text-center font-semibold">
