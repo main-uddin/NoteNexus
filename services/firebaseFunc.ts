@@ -53,9 +53,7 @@ const initiateUserData = async (
     email,
     firstname,
     lastname,
-    cart: [],
-    wishlist: [],
-    address: {},
+    notes: [],
   });
 };
 

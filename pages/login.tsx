@@ -41,7 +41,7 @@ const Login = (): React.ReactElement => {
         userData.email,
         userData.password
       );
-      router.push("/");
+      router.push("/notes");
       addAuth(uid);
       toast.success(
         "user successfully logged in!",

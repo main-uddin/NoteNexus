@@ -68,7 +68,7 @@ const Signup = (): React.ReactElement => {
         userData.lastname
       );
       addAuth(uid);
-      router.push("/");
+      router.push("/notes");
       toast.success(
         "user created successfully!",
         {
