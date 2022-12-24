@@ -4,12 +4,14 @@ type InitialState = {
   sort_by_time: string;
   filter_by_priority: string;
   filter_by_label: string[];
+  filter_by_search: string;
 
   sortByTime: (time: string) => void;
 
   filterByPriority: (priority: string) => void;
 
   filterByLabel: (label: string) => void;
+  filterBySearch: (searchKey: string) => void;
 };
 
 const useFilterStore = create<InitialState>(
@@ -17,6 +19,7 @@ const useFilterStore = create<InitialState>(
     sort_by_time: "High To Low",
     filter_by_priority: "",
     filter_by_label: [],
+    filter_by_search: "",
 
     sortByTime: (time: string) =>
       set({
@@ -37,6 +40,9 @@ const useFilterStore = create<InitialState>(
               )
             : [...state.filter_by_label, label],
       })),
+
+    filterBySearch: (searchKey) =>
+      set({ filter_by_search: searchKey }),
   })
 );
 
