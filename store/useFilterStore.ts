@@ -1,43 +1,35 @@
 import create from "zustand";
 
-type FilterInitialState = {
-  labels: string[];
-  sort_by_time: "New To Old" | "Old To New";
-  sort_by_priority: "High" | "Medium" | "Low";
+type InitialState = {
+  sort_by_time: string;
+  filter_by_priority: string;
+  labels: string;
 
-  sortByTime: (
-    time: "New To Old" | "Old To New"
-  ) => void;
+  sortByTime: (time: string) => void;
 
-  sortByPriority: (
-    priority: "High" | "Medium" | "Low"
-  ) => void;
+  filterByPriority: (priority: string) => void;
 
   filterByLabel: (label: string) => void;
 };
 
-const useFilterStore = create<FilterInitialState>(
+const useFilterStore = create<InitialState>(
   (set) => ({
-    sort_by_time: "New To Old",
-    sort_by_priority: "High",
-    labels: ["Home", "Work", "Personal"],
-    sortByTime: (time) =>
+    sort_by_time: "High To Low",
+    filter_by_priority: "High",
+    labels: "Home",
+
+    sortByTime: (time: string) =>
       set({
         sort_by_time: time,
       }),
-    sortByPriority: (priority) =>
+
+    filterByPriority: (priority: string) =>
       set({
-        sort_by_priority: priority,
+        filter_by_priority: priority,
       }),
 
-    filterByLabel: (label) =>
-      set((state) => ({
-        labels: state.labels.includes(label)
-          ? state.labels.filter(
-              (x) => x === label
-            )
-          : [...state.labels, label],
-      })),
+    filterByLabel: (label: string) =>
+      set({ labels: label }),
   })
 );
 
