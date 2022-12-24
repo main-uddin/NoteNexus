@@ -1,22 +1,44 @@
 import create from "zustand";
-import { FilterInitialState } from "../../types";
 
-const useFilterStore = create<FilterInitialState>((set) => ({
-  category: [],
-  ratings: 1,
-  sort_by: "Low to High",
-  price: 0,
-  selectCategory: (categoryName) =>
-    set((state) => ({
-      category: state.category.includes(categoryName)
-        ? state.category.filter((x) => x !== categoryName)
-        : [...state.category, categoryName],
-    })),
-  selectRatings: (ratings) => set({ ratings: ratings }),
-  selectSortBy: (sortType) => set({ sort_by: sortType }),
-  selectPrice: (price) => set({ price: price }),
-  clearAllFilters: () =>
-    set({ category: [], ratings: 1, sort_by: "Low to High" }),
-}));
+type FilterInitialState = {
+  labels: string[];
+  sort_by_time: "New To Old" | "Old To New";
+  sort_by_priority: "High" | "Medium" | "Low";
+
+  sortByTime: (
+    time: "New To Old" | "Old To New"
+  ) => void;
+
+  sortByPriority: (
+    priority: "High" | "Medium" | "Low"
+  ) => void;
+
+  filterByLabel: (label: string) => void;
+};
+
+const useFilterStore = create<FilterInitialState>(
+  (set) => ({
+    sort_by_time: "New To Old",
+    sort_by_priority: "High",
+    labels: ["Home", "Work", "Personal"],
+    sortByTime: (time) =>
+      set({
+        sort_by_time: time,
+      }),
+    sortByPriority: (priority) =>
+      set({
+        sort_by_priority: priority,
+      }),
+
+    filterByLabel: (label) =>
+      set((state) => ({
+        labels: state.labels.includes(label)
+          ? state.labels.filter(
+              (x) => x === label
+            )
+          : [...state.labels, label],
+      })),
+  })
+);
 
 export default useFilterStore;
