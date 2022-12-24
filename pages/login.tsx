@@ -2,58 +2,72 @@ import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
-const LoginPage = (): React.ReactElement => {
-  const [userData, setUserData] = useState({
-    email: String,
-    password: String,
-  });
-  // const router = useRouter();
+// import { LoadingSpinner } from "../components/";
+// import { useNoAuthRedirect } from "../hooks";
+import { useAuthStore } from "../store";
+// import { loginFunc } from "../services";
+import { toast } from "react-hot-toast";
 
-  // const addAuth = useAuthStore(
-  //   (state: any) => state.addAuth
-  // );
+type InitialState = {
+  email: string;
+  password: string;
+};
+
+const initialState: InitialState = {
+  email: "",
+  password: "",
+};
+
+const Login = (): React.ReactElement => {
+  const [userData, setUserData] =
+    useState<InitialState>(initialState);
+  const router = useRouter();
+
+  const addAuth = useAuthStore(
+    (state: any) => state.addAuth
+  );
 
   const guestLogin = () => {
-    setUserData((prev: any) => ({
+    setUserData((prev) => ({
       ...prev,
       email: "johndoe@gmail.com",
       password: "123456",
     }));
   };
 
-  // const loginUser = async () => {
-  //   try {
-  //     const uid = await loginFunc(
-  //       userData.email,
-  //       userData.password
-  //     );
-  //     router.push("/");
-  //     addAuth(uid);
-  //     toast.success(
-  //       "user successfully logged in!",
-  //       {
-  //         position: "bottom-center",
-  //       }
-  //     );
-  //   } catch (errorMsg: any) {
-  //     toast.error(errorMsg.code);
-  //   }
-  // };
+  const loginUser = async () => {
+    try {
+      // const uid = await loginFunc(
+      //   userData.email,
+      //   userData.password
+      // );
+      router.push("/");
+      // addAuth(uid);
+      toast.success(
+        "user successfully logged in!",
+        {
+          position: "bottom-center",
+        }
+      );
+    } catch (errorMsg: any) {
+      toast.error(errorMsg.code);
+    }
+  };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // loginUser();
+    loginUser();
   };
 
-  // const handleInput = (
-  //   e: React.ChangeEvent<HTMLInputElement>
-  // ) => {
-  //   const { name, value } = e.currentTarget;
-  //   setUserData((prev) => ({
-  //     ...prev,
-  //     [name]: value,
-  //   }));
-  // };
+  const handleInput = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ) => {
+    const { name, value } = e.currentTarget;
+    setUserData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
 
   // const { loading } = useNoAuthRedirect();
 
@@ -67,7 +81,7 @@ const LoginPage = (): React.ReactElement => {
         <title>Login</title>
       </Head>
       <form onSubmit={handleSubmit}>
-        <div className="m-auto h-fit w-96 space-y-2 rounded-md border border-gray-300 bg-light-foreground p-6 shadow-md">
+        <div className="m-auto h-fit w-96 space-y-2 rounded-md border border-gray-300 bg-slate-50 p-6 shadow-md">
           <h1 className="text-2xl font-semibold text-gray-600">
             Login
           </h1>
@@ -81,8 +95,8 @@ const LoginPage = (): React.ReactElement => {
                 name="email"
                 id="email"
                 required
-                // value={userData.email}
-                // onChange={handleInput}
+                value={userData.email}
+                onChange={handleInput}
               />
             </span>
             <span className="flex flex-col space-y-1">
@@ -96,8 +110,8 @@ const LoginPage = (): React.ReactElement => {
                 name="password"
                 id="password"
                 required
-                // value={userData.password}
-                // onChange={handleInput}
+                value={userData.password}
+                onChange={handleInput}
               />
             </span>
           </div>
@@ -125,4 +139,4 @@ const LoginPage = (): React.ReactElement => {
   );
 };
 
-export default LoginPage;
+export default Login;
