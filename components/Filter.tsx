@@ -24,6 +24,8 @@ const Filter = (): React.ReactElement => {
     sortByTime,
     filterByPriority,
     filterByLabel,
+    sort_by_time,
+    filter_by_priority,
     labels,
   } = useFilterStore((store) => store);
 
