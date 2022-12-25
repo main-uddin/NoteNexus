@@ -10,7 +10,7 @@ const Sidebar = () => {
   const router = useRouter();
 
   return (
-    <ul className="sticky top-16 h-fit w-full space-y-3 bg-light-foreground">
+    <ul className="sticky top-16 space-y-3 bg-light-foreground">
       <Link href="/notes">
         <li
           className={`flex ${
