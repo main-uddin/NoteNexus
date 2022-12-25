@@ -16,7 +16,7 @@ type InitialState = {
 
 const useFilterStore = create<InitialState>(
   (set) => ({
-    sort_by_time: "High To Low",
+    sort_by_time: "New To Old",
     filter_by_priority: "",
     filter_by_label: [],
     filter_by_search: "",
