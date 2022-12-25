@@ -18,6 +18,11 @@ const CreateNoteCard = () => {
     (store) => store
   );
 
+  const [
+    toggleColorPallete,
+    setToggleColorPallete,
+  ] = useState<boolean>(false);
+
   const {
     mutate: addNote,
     isLoading,
@@ -75,7 +80,13 @@ const CreateNoteCard = () => {
 
   return (
     <div className="fixed top-0 bottom-0 left-0 right-0 z-40 flex items-center justify-center bg-black/50">
-      <div className="relative mx-auto h-64 w-2/5 rounded-md border border-gray-600 bg-light-foreground">
+      <div
+        className={`relative mx-auto h-64 w-2/5 rounded-md border border-gray-600 ${
+          noteData.color
+            ? noteData.color
+            : "bg-light-foreground"
+        }`}
+      >
         <div className="flex h-14 w-full gap-5">
           <div className="h-full w-11/12 border-b">
             <input
@@ -131,9 +142,16 @@ const CreateNoteCard = () => {
         </div>
         <div className="absolute bottom-0 left-0 right-0 flex h-14 w-full justify-between border-t border-gray-600 px-2">
           <div className="flex items-center gap-5">
-            <span className="hover:cursor-pointer">
+            <span
+              className="hover:cursor-pointer"
+              onClick={() => {
+                setToggleColorPallete(
+                  (prev) => !prev
+                );
+              }}
+            >
               <MdColorLens size={25} />
-              {false && (
+              {toggleColorPallete && (
                 <ColorPallete
                   colorPalleteHandler={
                     colorPalleteHandler
