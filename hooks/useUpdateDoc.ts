@@ -1,13 +1,13 @@
 import {
-  QueryClient,
   useMutation,
+  useQueryClient,
 } from "@tanstack/react-query";
 import { updateUserDoc } from "../services/firebaseFunc";
 import { useAuthStore } from "../store";
 
-const queryClient = new QueryClient();
-
 const useUpdateDoc = (collectionName: string) => {
+  const queryClient = useQueryClient();
+
   const authToken = useAuthStore(
     (store: any) => store.authToken
   );

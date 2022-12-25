@@ -61,13 +61,15 @@ const NotesPage = (): React.ReactElement => {
                 )
               )
             )
-          ).map((x) => (
-            <NotesCard
-              key={x.id}
-              noteData={x}
-              userNotesData={userData.notes}
-            />
-          ))}
+          )
+            .filter((x) => !x.archive && !x.trash)
+            .map((x) => (
+              <NotesCard
+                key={x.id}
+                noteData={x}
+                userNotesData={userData.notes}
+              />
+            ))}
         </div>
       </div>
       {openCreateNoteModal && <CreateNoteCard />}
