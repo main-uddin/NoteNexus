@@ -5,7 +5,10 @@ import {
 import { updateUserDoc } from "../services/firebaseFunc";
 import { useAuthStore } from "../store";
 
-const useUpdateDoc = (collectionName: string) => {
+const useUpdateDoc = (
+  collectionName: string,
+  onSuccessFunc?: () => void
+) => {
   const queryClient = useQueryClient();
 
   const authToken = useAuthStore(
@@ -26,6 +29,8 @@ const useUpdateDoc = (collectionName: string) => {
           queryClient.invalidateQueries([
             "user-data",
           ]);
+
+          onSuccessFunc && onSuccessFunc();
         },
       }
     );
