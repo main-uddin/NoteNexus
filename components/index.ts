@@ -7,6 +7,7 @@ import SidebarLayout from "./SidebarLayout";
 import TagInput from "./LabelInput";
 import Filter from "./Filter";
 import CreateNoteCard from "./CreateNoteCard";
+import NotesCard from "./NotesCard";
 
 export {
   Navbar,
@@ -18,4 +19,5 @@ export {
   TagInput,
   Filter,
   CreateNoteCard,
+  NotesCard,
 };
