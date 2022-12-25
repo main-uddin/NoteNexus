@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { toast } from "react-hot-toast";
 import {
   MdAdd,
   MdDarkMode,
@@ -65,6 +66,9 @@ const Navbar = (): React.ReactElement => {
             onClick={() => {
               removeAuth();
               router.push("/");
+              toast.success(
+                "user logged out successfully"
+              );
             }}
           >
             <MdLogout size={25} />

@@ -29,7 +29,7 @@ const Login = (): React.ReactElement => {
   const guestLogin = () => {
     setUserData((prev) => ({
       ...prev,
-      email: "johndoe@gmail.com",
+      email: "ericadoe@gmail.com",
       password: "123456",
     }));
   };
