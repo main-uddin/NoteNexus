@@ -1,6 +1,10 @@
 import React from "react";
 import { MdAddCircleOutline } from "react-icons/md";
-const LabelInput = (): React.ReactElement => {
+const LabelInput = ({
+  labelChangeHandler,
+}: {
+  labelChangeHandler: (label: string) => void;
+}): React.ReactElement => {
   const handleToggle = (
     e: React.BaseSyntheticEvent<MouseEvent>
   ) => {
@@ -17,6 +21,11 @@ const LabelInput = (): React.ReactElement => {
           className="h-full w-full border-none bg-transparent p-3 outline-none"
           type="text"
           placeholder="Add Label"
+          onChange={(
+            e: React.ChangeEvent<HTMLInputElement>
+          ) => {
+            labelChangeHandler(e.target.value);
+          }}
         />
       </div>
       <div className="flex w-1/4 items-center justify-center">

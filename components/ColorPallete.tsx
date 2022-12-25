@@ -9,7 +9,13 @@ const colors = [
   { id: "qdwry", color: "bg-rose-500" },
 ];
 
-const ColorPallete = (): React.ReactElement => {
+const ColorPallete = ({
+  colorPalleteHandler,
+}: {
+  colorPalleteHandler: (
+    colorCode: string
+  ) => void;
+}): React.ReactElement => {
   const handleToggle = (
     e: React.BaseSyntheticEvent<MouseEvent>
   ) => {
@@ -25,6 +31,9 @@ const ColorPallete = (): React.ReactElement => {
         <div
           key={x.id}
           className={`h-8 w-8 rounded-full border border-gray-600 ${x.color}`}
+          onClick={() => {
+            colorPalleteHandler(x.color);
+          }}
         ></div>
       ))}
     </div>
