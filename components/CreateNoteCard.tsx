@@ -1,3 +1,4 @@
+import { arrayUnion } from "firebase/firestore";
 import { useState } from "react";
 import {
   MdColorLens,
@@ -5,6 +6,7 @@ import {
   MdLabel,
   MdOutlinePushPin,
 } from "react-icons/md";
+import { useUpdateDoc } from "../hooks";
 import { useToggleNoteStore } from "../store";
 import { Note } from "../types";
 import ColorPallete from "./ColorPallete";
@@ -14,6 +16,12 @@ const CreateNoteCard = () => {
   const { closeCreateNote } = useToggleNoteStore(
     (store) => store
   );
+
+  const {
+    mutate: addNote,
+    isLoading,
+    isError,
+  } = useUpdateDoc("users");
 
   const [noteData, setNoteData] = useState<Note>({
     id: Date.now().toString(),
@@ -147,7 +155,14 @@ const CreateNoteCard = () => {
             </span>
           </div>
           <div className="flex items-center space-x-2">
-            <button className="rounded-md border border-gray-600 p-1 px-2">
+            <button
+              className="rounded-md border border-gray-600 p-1 px-2"
+              onClick={() => {
+                addNote({
+                  notes: arrayUnion(noteData),
+                });
+              }}
+            >
               ADD NOTE
             </button>
             <button

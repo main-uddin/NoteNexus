@@ -71,10 +71,20 @@ const signoutFunc = async (): Promise<void> => {
   await signOut(auth);
 };
 
+const updateUserDoc = async (
+  collectionName: string,
+  docID: string,
+  updatedObj: any
+) => {
+  const docRef = doc(db, collectionName, docID);
+  return await updateDoc(docRef, updatedObj);
+};
+
 export {
   signupFunc,
   loginFunc,
   initiateUserData,
   getSingleDoc,
   signoutFunc,
+  updateUserDoc,
 };

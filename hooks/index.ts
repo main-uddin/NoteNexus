@@ -1,3 +1,4 @@
 import useGetDoc from "./useGetDoc";
+import useUpdateDoc from "./useUpdateDoc";
 
-export { useGetDoc };
+export { useGetDoc, useUpdateDoc };
