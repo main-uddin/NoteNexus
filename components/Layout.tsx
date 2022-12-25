@@ -1,6 +1,7 @@
 import React from "react";
 import Navbar from "./Navbar";
 import { Ubuntu } from "@next/font/google";
+import { Toaster } from "react-hot-toast";
 
 const ubuntu = Ubuntu({
   subsets: ["latin"],
@@ -18,6 +19,7 @@ const Layout = ({
     >
       <Navbar />
       {children}
+      <Toaster position="bottom-center" />
     </div>
   );
 };
