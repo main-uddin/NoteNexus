@@ -1,21 +1,10 @@
 import {
-  MdColorLens,
-  MdFilter,
-  MdFilterList,
-  MdLabel,
-  MdOutlineFilterAlt,
-  MdOutlinePushPin,
-  MdPushPin,
-} from "react-icons/md";
-import {
   CreateNoteCard,
   SearchbarFilter,
-  Sidebar,
-  SidebarLayout,
 } from "../components";
 import NotesCard from "../components/NotesCard";
-import SearchBar from "../components/SearchBar";
 import { notesData } from "../data";
+import { useGetDoc } from "../hooks";
 import {
   useFilterStore,
   useToggleNoteStore,
@@ -25,6 +14,12 @@ import { Note } from "../types";
 const NotesPage = (): React.ReactElement => {
   const { openCreateNoteModal } =
     useToggleNoteStore((store) => store);
+
+  const {
+    data: userData,
+    isLoading: isUserDataLoading,
+    isError: isUserDataError,
+  } = useGetDoc("users");
 
   const {
     filter_by_priority,
@@ -93,6 +88,9 @@ const NotesPage = (): React.ReactElement => {
           .includes(filter_by_search)
     );
   };
+
+  if (isUserDataLoading)
+    return <h1>loading...</h1>;
 
   return (
     <div className="mx-auto mt-20 md:w-4/5 lg:w-2/5">
