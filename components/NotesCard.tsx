@@ -29,7 +29,7 @@ const NotesCard = ({
 
   return (
     <div className="relative h-fit space-y-1 rounded-md border border-gray-400 bg-light-foreground p-3 pb-14 shadow-sm">
-      {togglePin ? (
+      {noteData.pinned ? (
         <span
           className="absolute top-3 right-3 hover:cursor-pointer"
           onClick={() =>
@@ -57,9 +57,13 @@ const NotesCard = ({
         </p>
 
         <div className="flex gap-3">
-          <span className="flex items-center gap-1 rounded-md border border-gray-400 bg-light-background p-1 px-2 text-sm font-medium">
-            <MdLabel size={15} /> {noteData.label}
-          </span>
+          {
+            <span className="flex items-center gap-1 rounded-md border border-gray-400 bg-light-background px-3 text-sm font-medium">
+              {noteData.label
+                ? noteData.label
+                : "no label"}
+            </span>
+          }
           <span className="rounded-md border border-gray-400 bg-light-background p-1 px-2 text-sm font-medium">
             {noteData.priority}
           </span>
