@@ -1,4 +1,5 @@
 import { arrayUnion } from "firebase/firestore";
+import { title } from "process";
 import { useState } from "react";
 import {
   MdColorLens,
@@ -35,6 +36,16 @@ const CreateNoteCard = () => {
     priority: "Low",
     trash: false,
   });
+
+  const updatedObj = {
+    ...noteData,
+    title: noteData.title
+      ? noteData.title
+      : "untitled note",
+    note: noteData.note
+      ? noteData.note
+      : "Empty Note",
+  };
 
   const inputHandler = (
     e: React.BaseSyntheticEvent
@@ -159,7 +170,7 @@ const CreateNoteCard = () => {
               className="rounded-md border border-gray-600 p-1 px-2"
               onClick={() => {
                 addNote({
-                  notes: arrayUnion(noteData),
+                  notes: arrayUnion(updatedObj),
                 });
               }}
             >
