@@ -13,7 +13,11 @@ import ColorPallete from "./ColorPallete";
 import TagInput from "./LabelInput";
 import { Note } from "../types";
 import { useUpdateDoc } from "../hooks";
-import { togglePin } from "../utility";
+import {
+  toggleArchive,
+  togglePin,
+  toggleTrash,
+} from "../utility";
 
 const NotesCard = ({
   noteData,
@@ -29,6 +33,12 @@ const NotesCard = ({
     useState<boolean>(false);
 
   const { mutate: addRemovePin } =
+    useUpdateDoc("users");
+
+  const { mutate: addRemoveArchive } =
+    useUpdateDoc("users");
+
+  const { mutate: addRemoveTrash } =
     useUpdateDoc("users");
 
   return (
@@ -103,12 +113,64 @@ const NotesCard = ({
             <MdColorLens size={25} />
             {/* {toggleColor && <ColorPallete />} */}
           </span>
-          <span className="rounded-md p-1 hover:cursor-pointer hover:bg-light-background">
-            <MdArchive size={25} />
-          </span>
-          <span className="rounded-md p-1 hover:cursor-pointer hover:bg-light-background">
-            <MdDelete size={25} />
-          </span>
+          {noteData.archive ? (
+            <span
+              className="rounded-md p-1 hover:cursor-pointer hover:bg-light-background"
+              onClick={() => {
+                addRemoveArchive({
+                  notes: toggleArchive(
+                    noteData,
+                    userNotesData
+                  ),
+                });
+              }}
+            >
+              <MdArchive size={25} />
+            </span>
+          ) : (
+            <span
+              className="rounded-md p-1 hover:cursor-pointer hover:bg-light-background"
+              onClick={() => {
+                addRemoveArchive({
+                  notes: toggleArchive(
+                    noteData,
+                    userNotesData
+                  ),
+                });
+              }}
+            >
+              <MdArchive size={25} />
+            </span>
+          )}
+          {noteData.trash ? (
+            <span
+              className="rounded-md p-1 hover:cursor-pointer hover:bg-light-background"
+              onClick={() => {
+                addRemoveTrash({
+                  notes: toggleTrash(
+                    noteData,
+                    userNotesData
+                  ),
+                });
+              }}
+            >
+              <MdDelete size={25} />
+            </span>
+          ) : (
+            <span
+              className="rounded-md p-1 hover:cursor-pointer hover:bg-light-background"
+              onClick={() => {
+                addRemoveTrash({
+                  notes: toggleTrash(
+                    noteData,
+                    userNotesData
+                  ),
+                });
+              }}
+            >
+              <MdDelete size={25} />
+            </span>
+          )}
         </div>
       </div>
     </div>
