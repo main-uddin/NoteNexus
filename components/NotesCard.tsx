@@ -97,7 +97,9 @@ const NotesCard = ({
       <div className="absolute left-0 right-0 bottom-0 flex h-10 items-center justify-between border-t border-gray-300 px-3">
         <div className="">
           <span className="text-sm font-medium">
-            Created At: {noteData.createdAt}
+            {new Date(
+              noteData.createdAt
+            ).toDateString()}
           </span>
         </div>
         <div className="flex gap-4">
