@@ -100,14 +100,14 @@ const NotesPage = (): React.ReactElement => {
           Pinned Notes
         </h1>
         <div className="space-y-5">
-          {notesData
+          {/* {notesData
             .filter((x) => x.pinned)
             .map((x) => (
               <NotesCard
                 key={x.id}
                 noteData={x}
               />
-            ))}
+            ))} */}
         </div>
       </div>
       <div className="mt-5 space-y-4">
@@ -121,7 +121,7 @@ const NotesPage = (): React.ReactElement => {
               filter_by_label,
               sortByTime(
                 sort_by_time,
-                filterByPrority(notesData)
+                filterByPrority(userData.notes)
               )
             )
           ).map((x) => (
