@@ -1,5 +1,4 @@
 import { arrayUnion } from "firebase/firestore";
-import { title } from "process";
 import { useState } from "react";
 import {
   MdColorLens,
@@ -22,6 +21,9 @@ const CreateNoteCard = () => {
     toggleColorPallete,
     setToggleColorPallete,
   ] = useState<boolean>(false);
+
+  const [toggleLabel, setLabelToggle] =
+    useState<boolean>(false);
 
   const {
     mutate: addNote,
@@ -65,7 +67,7 @@ const CreateNoteCard = () => {
   const labelHandler = (label: string) => {
     setNoteData((prev) => ({
       ...prev,
-      label: prev.label,
+      label: label,
     }));
   };
 
@@ -76,6 +78,10 @@ const CreateNoteCard = () => {
       ...prev,
       color: colorCode,
     }));
+  };
+
+  const toggleLabelFunc = () => {
+    setLabelToggle((prev) => !prev);
   };
 
   return (
@@ -134,9 +140,9 @@ const CreateNoteCard = () => {
           ></textarea>
         </div>
         <div className="mt-3 px-2">
-          {noteData.label && (
+          {noteData.label && !toggleLabel && (
             <span className="border border-gray-600 px-2 py-1">
-              Label
+              {noteData.label}
             </span>
           )}
         </div>
@@ -159,14 +165,25 @@ const CreateNoteCard = () => {
                 />
               )}
             </span>
-            <span className="hover:cursor-pointer">
+            <span
+              className="hover:cursor-pointer"
+              onClick={() => {
+                setLabelToggle((prev) => !prev);
+              }}
+            >
               <MdLabel size={25} />
-              {false && (
-                <LabelInput
-                  labelChangeHandler={
-                    labelHandler
-                  }
-                />
+              {toggleLabel && (
+                <span className="absolute top-1 left-8">
+                  <LabelInput
+                    label={noteData.label}
+                    labelChangeHandler={
+                      labelHandler
+                    }
+                    toggleHandler={
+                      toggleLabelFunc
+                    }
+                  />
+                </span>
               )}
             </span>
             <span>
