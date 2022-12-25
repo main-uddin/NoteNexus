@@ -3,11 +3,13 @@ import {
   SearchbarFilter,
   NotesCard,
 } from "../components";
+import { notesData } from "../data";
 import { useGetDoc } from "../hooks";
 import {
   useFilterStore,
   useToggleNoteStore,
 } from "../store";
+import { Note } from "../types";
 import {
   filterByLabel,
   filterByPrority,
@@ -42,7 +44,19 @@ const NotesPage = (): React.ReactElement => {
         <h1 className="text-center font-semibold">
           Pinned Notes
         </h1>
-        <div className="space-y-5"></div>
+        <div className="space-y-5">
+          {userData.notes
+            ?.filter(
+              (x: Note) =>
+                x.pinned && !x.trash && !x.archive
+            )
+            .map((x: Note) => (
+              <NotesCard
+                noteData={x}
+                userNotesData={userData.notes}
+              />
+            ))}
+        </div>
       </div>
       <div className="mt-5 space-y-4">
         <h1 className="text-center font-semibold">
@@ -62,7 +76,12 @@ const NotesPage = (): React.ReactElement => {
               )
             )
           )
-            .filter((x) => !x.archive && !x.trash)
+            .filter(
+              (x) =>
+                !x.archive &&
+                !x.trash &&
+                !x.pinned
+            )
             .map((x) => (
               <NotesCard
                 key={x.id}
