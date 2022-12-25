@@ -12,17 +12,35 @@ const Sidebar = () => {
   return (
     <ul className="sticky top-16 h-fit w-full space-y-3 bg-light-foreground">
       <Link href="/notes">
-        <li className="flex items-center gap-2 p-4 text-lg font-normal hover:cursor-pointer hover:bg-light-background">
+        <li
+          className={`flex ${
+            router.asPath === "/notes"
+              ? "bg-light-primary text-white"
+              : " hover:bg-light-background"
+          } items-center gap-2 p-4 text-lg font-normal hover:cursor-pointer`}
+        >
           <MdNotes /> Notes
         </li>
       </Link>
       <Link href="/archives">
-        <li className="flex items-center gap-2 p-4 text-lg font-normal hover:cursor-pointer hover:bg-light-background">
+        <li
+          className={`flex ${
+            router.asPath === "/archives"
+              ? "bg-light-primary text-white"
+              : " hover:bg-light-background"
+          } items-center gap-2 p-4 text-lg font-normal hover:cursor-pointer`}
+        >
           <MdArchive /> Archives
         </li>
       </Link>
       <Link href="/trash">
-        <li className="flex items-center gap-2 p-4 text-lg font-normal hover:cursor-pointer hover:bg-light-background">
+        <li
+          className={`flex ${
+            router.asPath === "/trash"
+              ? "bg-light-primary text-white"
+              : " hover:bg-light-background"
+          } items-center gap-2 p-4 text-lg font-normal hover:cursor-pointer`}
+        >
           <MdDelete /> Trash
         </li>
       </Link>
