@@ -62,7 +62,11 @@ const NotesPage = (): React.ReactElement => {
               )
             )
           ).map((x) => (
-            <NotesCard key={x.id} noteData={x} />
+            <NotesCard
+              key={x.id}
+              noteData={x}
+              userNotesData={userData.notes}
+            />
           ))}
         </div>
       </div>

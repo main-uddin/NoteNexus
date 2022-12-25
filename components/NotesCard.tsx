@@ -12,38 +12,52 @@ import { useState } from "react";
 import ColorPallete from "./ColorPallete";
 import TagInput from "./LabelInput";
 import { Note } from "../types";
+import { useUpdateDoc } from "../hooks";
+import { togglePin } from "../utility";
 
 const NotesCard = ({
   noteData,
+  userNotesData,
 }: {
   noteData: Note;
+  userNotesData: Note[];
 }) => {
-  const [togglePin, setTogglePin] =
-    useState<boolean>(false);
-
   const [toggleColor, setToggleColor] =
     useState<boolean>(false);
 
   const [toggleTagInput, setToggleTagInput] =
     useState<boolean>(false);
 
+  const { mutate: addRemovePin } =
+    useUpdateDoc("users");
+
   return (
     <div className="relative h-fit space-y-1 rounded-md border border-gray-400 bg-light-foreground p-3 pb-14 shadow-sm">
       {noteData.pinned ? (
         <span
           className="absolute top-3 right-3 hover:cursor-pointer"
-          onClick={() =>
-            setTogglePin((prev) => !prev)
-          }
+          onClick={() => {
+            addRemovePin({
+              notes: togglePin(
+                noteData,
+                userNotesData
+              ),
+            });
+          }}
         >
           <MdPushPin size={25} />
         </span>
       ) : (
         <span
           className="absolute top-3 right-3 hover:cursor-pointer"
-          onClick={() =>
-            setTogglePin((prev) => !prev)
-          }
+          onClick={() => {
+            addRemovePin({
+              notes: togglePin(
+                noteData,
+                userNotesData
+              ),
+            });
+          }}
         >
           <MdOutlinePushPin size={25} />
         </span>
@@ -87,7 +101,7 @@ const NotesCard = ({
             }}
           >
             <MdColorLens size={25} />
-            {toggleColor && <ColorPallete />}
+            {/* {toggleColor && <ColorPallete />} */}
           </span>
           <span className="rounded-md p-1 hover:cursor-pointer hover:bg-light-background">
             <MdArchive size={25} />
