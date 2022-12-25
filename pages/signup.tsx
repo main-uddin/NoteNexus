@@ -8,6 +8,7 @@ import {
   initiateUserData,
   signupFunc,
 } from "../services";
+import { useNoAuthRedirect } from "../hooks";
 
 type InitialState = {
   firstname: string;
@@ -77,6 +78,12 @@ const Signup = (): React.ReactElement => {
       });
     }
   };
+
+  const { loading } = useNoAuthRedirect();
+
+  if (loading) {
+    return <h1>loading...</h1>;
+  }
 
   return (
     <div className="flex h-screen items-center justify-center">

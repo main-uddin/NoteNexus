@@ -1,8 +1,20 @@
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
+import { useAuthStore } from "../store";
+import { useNoAuthRedirect } from "../hooks";
 
 export default function Home() {
+  const authStatus = useAuthStore(
+    (store: any) => store.authStatus
+  );
+
+  const { loading } = useNoAuthRedirect();
+
+  if (loading) {
+    return <h1>loading...</h1>;
+  }
+
   return (
     <>
       <Head>

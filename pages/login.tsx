@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useAuthStore } from "../store";
 import { loginFunc } from "../services";
 import { toast } from "react-hot-toast";
+import { useNoAuthRedirect } from "../hooks";
 
 type InitialState = {
   email: string;
@@ -66,6 +67,12 @@ const Login = (): React.ReactElement => {
       [name]: value,
     }));
   };
+
+  const { loading } = useNoAuthRedirect();
+
+  if (loading) {
+    return <h1>loading...</h1>;
+  }
 
   return (
     <div className="flex h-screen items-center justify-center">
