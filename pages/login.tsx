@@ -2,8 +2,6 @@ import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useState } from "react";
-// import { LoadingSpinner } from "../components/";
-// import { useNoAuthRedirect } from "../hooks";
 import { useAuthStore } from "../store";
 import { loginFunc } from "../services";
 import { toast } from "react-hot-toast";
@@ -68,12 +66,6 @@ const Login = (): React.ReactElement => {
       [name]: value,
     }));
   };
-
-  // const { loading } = useNoAuthRedirect();
-
-  // if (loading) {
-  //   return <LoadingSpinner />;
-  // }
 
   return (
     <div className="flex h-screen items-center justify-center">
