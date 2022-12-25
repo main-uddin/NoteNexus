@@ -27,7 +27,7 @@ const ArchivesPage = (): React.ReactElement => {
           .map((x: Note) => (
             <NotesCard
               noteData={x}
-              userNotesData={userData}
+              userNotesData={userData.notes}
             />
           ))}
       </div>

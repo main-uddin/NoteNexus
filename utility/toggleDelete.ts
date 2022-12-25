@@ -4,7 +4,7 @@ const toggleTrash = (
   notesData: Note,
   userNotesData: Note[]
 ) => {
-  return userNotesData.map((x) => {
+  return userNotesData?.map((x) => {
     if (x.id === notesData.id) {
       return {
         ...x,
