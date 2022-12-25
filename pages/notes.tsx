@@ -38,7 +38,7 @@ const NotesPage = (): React.ReactElement => {
     return <h1>loading...</h1>;
 
   return (
-    <div className="mx-auto mt-20 md:w-4/5 lg:w-2/5">
+    <div className="mx-auto mt-24 md:w-4/5 lg:w-2/5">
       <SearchbarFilter />
       <div className="mt-5 space-y-5">
         <h1 className="text-center font-semibold">
