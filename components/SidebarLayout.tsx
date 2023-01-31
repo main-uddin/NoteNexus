@@ -10,9 +10,7 @@ const SidebarLayout = ({
       <div className="sticky col-span-2 min-h-screen bg-light-foreground">
         <Sidebar />
       </div>
-      <div className="col-span-10">
-        {children}
-      </div>
+      <div className="col-span-10">{children}</div>
     </div>
   );
 };

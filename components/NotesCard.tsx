@@ -19,6 +19,7 @@ import {
   toggleTrash,
 } from "../utility";
 import UpdateColorPallete from "./UpdateColorPallete";
+import UpdateNoteCard from "./UpdateNoteCard";
 
 const NotesCard = ({
   noteData,
@@ -42,7 +43,7 @@ const NotesCard = ({
 
   return (
     <div
-      className={`relative h-fit space-y-1 rounded-md border border-gray-400 ${noteData.color} p-3 pb-14 shadow-sm`}
+      className={`relative h-fit rounded-md border border-gray-400 ${noteData.color} p-3 pb-14 shadow-sm`}
     >
       {noteData.pinned ? (
         <span
@@ -169,6 +170,10 @@ const NotesCard = ({
           )}
         </div>
       </div>
+      <UpdateNoteCard
+        notesData={noteData}
+        userNoteData={userNotesData}
+      />
     </div>
   );
 };

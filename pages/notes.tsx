@@ -5,6 +5,7 @@ import {
   Sidebar,
   SidebarLayout,
 } from "../components";
+import UpdateCreateNoteCard from "../components/UpdateNoteCard";
 import { notesData } from "../data";
 import { useGetDoc } from "../hooks";
 import {
@@ -20,8 +21,9 @@ import {
 } from "../utility";
 
 const NotesPage = (): React.ReactElement => {
-  const { openCreateNoteModal } =
-    useToggleNoteStore((store) => store);
+  const { openCreateNoteModal } = useToggleNoteStore(
+    (store) => store
+  );
 
   const {
     data: userData,
@@ -36,8 +38,7 @@ const NotesPage = (): React.ReactElement => {
     filter_by_search,
   } = useFilterStore((store) => store);
 
-  if (isUserDataLoading)
-    return <h1>loading...</h1>;
+  if (isUserDataLoading) return <h1>loading...</h1>;
 
   return (
     <SidebarLayout>
@@ -51,9 +52,7 @@ const NotesPage = (): React.ReactElement => {
             {userData.notes
               ?.filter(
                 (x: Note) =>
-                  x.pinned &&
-                  !x.trash &&
-                  !x.archive
+                  x.pinned && !x.trash && !x.archive
               )
               .map((x: Note) => (
                 <NotesCard
@@ -82,10 +81,7 @@ const NotesPage = (): React.ReactElement => {
               )
             )
               .filter(
-                (x) =>
-                  !x.archive &&
-                  !x.trash &&
-                  !x.pinned
+                (x) => !x.archive && !x.trash && !x.pinned
               )
               .map((x) => (
                 <NotesCard
@@ -96,9 +92,7 @@ const NotesPage = (): React.ReactElement => {
               ))}
           </div>
         </div>
-        {openCreateNoteModal && (
-          <CreateNoteCard />
-        )}
+        {openCreateNoteModal && <CreateNoteCard />}
       </div>
     </SidebarLayout>
   );

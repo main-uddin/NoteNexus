@@ -9,6 +9,7 @@ import Filter from "./Filter";
 import CreateNoteCard from "./CreateNoteCard";
 import NotesCard from "./NotesCard";
 import UpdateColorPallete from "./UpdateColorPallete";
+import UpdateNoteCard from "./UpdateNoteCard";
 
 export {
   Navbar,
@@ -22,4 +23,5 @@ export {
   CreateNoteCard,
   NotesCard,
   UpdateColorPallete,
+  UpdateNoteCard,
 };
