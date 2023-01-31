@@ -69,7 +69,7 @@ const NotesPage = (): React.ReactElement => {
           </div>
           <div className="mt-5 space-y-4">
             <h1 className="text-center font-semibold">
-              Others Notes
+              Other Notes
             </h1>
             <div className="space-y-5">
               {filterBySearchKey(
