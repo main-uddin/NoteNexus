@@ -15,9 +15,11 @@ import LabelInput from "./LabelInput";
 const UpdateNoteCard = ({
   notesData,
   userNoteData,
+  closeUpdateNoteCard,
 }: {
   notesData: Note;
   userNoteData: Note[];
+  closeUpdateNoteCard: () => void;
 }) => {
   const { closeCreateNote } = useToggleNoteStore(
     (store) => store
@@ -192,7 +194,7 @@ const UpdateNoteCard = ({
             </button>
             <button
               className="rounded-md border border-gray-600 p-1 px-2"
-              onClick={closeCreateNote}
+              onClick={closeUpdateNoteCard}
             >
               CANCEL
             </button>

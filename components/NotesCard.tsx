@@ -34,6 +34,13 @@ const NotesCard = ({
   const [toggleTagInput, setToggleTagInput] =
     useState<boolean>(false);
 
+  const [toggleUpdateNoteCard, setToggleUpdateNoteCard] =
+    useState<boolean>(false);
+
+  const toggleUpdateNoteCardFunc = () => {
+    setToggleUpdateNoteCard((prev) => !prev);
+  };
+
   const { mutate: addRemovePin } = useUpdateDoc("users");
 
   const { mutate: addRemoveArchive } =
@@ -93,7 +100,10 @@ const NotesCard = ({
           </span>
         </div>
         <div className="flex gap-4">
-          <span className="rounded-md p-1 hover:cursor-pointer hover:bg-light-background">
+          <span
+            className="rounded-md p-1 hover:cursor-pointer hover:bg-light-background"
+            onClick={toggleUpdateNoteCardFunc}
+          >
             <MdEdit size={25} />
           </span>
           <span
@@ -170,10 +180,13 @@ const NotesCard = ({
           )}
         </div>
       </div>
-      <UpdateNoteCard
-        notesData={noteData}
-        userNoteData={userNotesData}
-      />
+      {toggleUpdateNoteCard && (
+        <UpdateNoteCard
+          notesData={noteData}
+          userNoteData={userNotesData}
+          closeUpdateNoteCard={toggleUpdateNoteCardFunc}
+        />
+      )}
     </div>
   );
 };
