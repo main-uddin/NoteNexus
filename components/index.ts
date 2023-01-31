@@ -8,6 +8,7 @@ import TagInput from "./LabelInput";
 import Filter from "./Filter";
 import CreateNoteCard from "./CreateNoteCard";
 import NotesCard from "./NotesCard";
+import UpdateColorPallete from "./UpdateColorPallete";
 
 export {
   Navbar,
@@ -20,4 +21,5 @@ export {
   Filter,
   CreateNoteCard,
   NotesCard,
+  UpdateColorPallete,
 };

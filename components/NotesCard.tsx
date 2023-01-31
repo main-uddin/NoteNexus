@@ -18,6 +18,7 @@ import {
   togglePin,
   toggleTrash,
 } from "../utility";
+import UpdateColorPallete from "./UpdateColorPallete";
 
 const NotesCard = ({
   noteData,
@@ -32,26 +33,23 @@ const NotesCard = ({
   const [toggleTagInput, setToggleTagInput] =
     useState<boolean>(false);
 
-  const { mutate: addRemovePin } =
-    useUpdateDoc("users");
+  const { mutate: addRemovePin } = useUpdateDoc("users");
 
   const { mutate: addRemoveArchive } =
     useUpdateDoc("users");
 
-  const { mutate: addRemoveTrash } =
-    useUpdateDoc("users");
+  const { mutate: addRemoveTrash } = useUpdateDoc("users");
 
   return (
-    <div className="relative h-fit space-y-1 rounded-md border border-gray-400 bg-light-foreground p-3 pb-14 shadow-sm">
+    <div
+      className={`relative h-fit space-y-1 rounded-md border border-gray-400 ${noteData.color} p-3 pb-14 shadow-sm`}
+    >
       {noteData.pinned ? (
         <span
           className="absolute top-3 right-3 hover:cursor-pointer"
           onClick={() => {
             addRemovePin({
-              notes: togglePin(
-                noteData,
-                userNotesData
-              ),
+              notes: togglePin(noteData, userNotesData),
             });
           }}
         >
@@ -62,10 +60,7 @@ const NotesCard = ({
           className="absolute top-3 right-3 hover:cursor-pointer"
           onClick={() => {
             addRemovePin({
-              notes: togglePin(
-                noteData,
-                userNotesData
-              ),
+              notes: togglePin(noteData, userNotesData),
             });
           }}
         >
@@ -76,16 +71,12 @@ const NotesCard = ({
         <h1 className="text-xl font-semibold">
           {noteData.title}
         </h1>
-        <p className="font-normal">
-          {noteData.note}
-        </p>
+        <p className="font-normal">{noteData.note}</p>
 
         <div className="flex gap-3">
           {
             <span className="flex items-center gap-1 rounded-md border border-gray-400 bg-light-background px-3 text-sm font-medium">
-              {noteData.label
-                ? noteData.label
-                : "no label"}
+              {noteData.label ? noteData.label : "no label"}
             </span>
           }
           <span className="rounded-md border border-gray-400 bg-light-background p-1 px-2 text-sm font-medium">
@@ -97,9 +88,7 @@ const NotesCard = ({
       <div className="absolute left-0 right-0 bottom-0 flex h-10 items-center justify-between border-t border-gray-300 px-3">
         <div className="">
           <span className="text-sm font-medium">
-            {new Date(
-              noteData.createdAt
-            ).toDateString()}
+            {new Date(noteData.createdAt).toDateString()}
           </span>
         </div>
         <div className="flex gap-4">
@@ -113,7 +102,12 @@ const NotesCard = ({
             }}
           >
             <MdColorLens size={25} />
-            {/* {toggleColor && <ColorPallete />} */}
+            {toggleColor && (
+              <UpdateColorPallete
+                noteData={noteData}
+                userNotesData={userNotesData}
+              />
+            )}
           </span>
           {noteData.archive ? (
             <span
