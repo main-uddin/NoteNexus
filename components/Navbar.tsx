@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -42,7 +43,13 @@ const Navbar = (): React.ReactElement => {
     <nav className="fixed left-0 right-0 top-0 z-40 flex h-16 items-center justify-between border-b border-gray-300 bg-light-foreground shadow-sm sm:px-5 lg:px-10">
       <div className="">
         <Link href="/">
-          <span className="text-2xl font-bold">
+          <span className="flex gap-1 text-2xl font-bold">
+            <Image
+              src="/circle.png"
+              alt=""
+              height={20}
+              width={30}
+            />{" "}
             Notation
           </span>
         </Link>
