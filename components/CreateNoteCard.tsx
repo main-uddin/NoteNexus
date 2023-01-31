@@ -17,10 +17,8 @@ const CreateNoteCard = () => {
     (store) => store
   );
 
-  const [
-    toggleColorPallete,
-    setToggleColorPallete,
-  ] = useState<boolean>(false);
+  const [toggleColorPallete, setToggleColorPallete] =
+    useState<boolean>(false);
 
   const [toggleLabel, setLabelToggle] =
     useState<boolean>(false);
@@ -29,7 +27,7 @@ const CreateNoteCard = () => {
     mutate: addNote,
     isLoading,
     isError,
-  } = useUpdateDoc("users");
+  } = useUpdateDoc("users", closeCreateNote);
 
   const [noteData, setNoteData] = useState<Note>({
     id: Date.now().toString(),
@@ -49,14 +47,10 @@ const CreateNoteCard = () => {
     title: noteData.title
       ? noteData.title
       : "untitled note",
-    note: noteData.note
-      ? noteData.note
-      : "Empty Note",
+    note: noteData.note ? noteData.note : "Empty Note",
   };
 
-  const inputHandler = (
-    e: React.BaseSyntheticEvent
-  ) => {
+  const inputHandler = (e: React.BaseSyntheticEvent) => {
     const { name, value } = e.target;
     setNoteData((prev) => ({
       ...prev,
@@ -71,9 +65,7 @@ const CreateNoteCard = () => {
     }));
   };
 
-  const colorPalleteHandler = (
-    colorCode: string
-  ) => {
+  const colorPalleteHandler = (colorCode: string) => {
     setNoteData((prev) => ({
       ...prev,
       color: colorCode,
@@ -151,17 +143,13 @@ const CreateNoteCard = () => {
             <span
               className="hover:cursor-pointer"
               onClick={() => {
-                setToggleColorPallete(
-                  (prev) => !prev
-                );
+                setToggleColorPallete((prev) => !prev);
               }}
             >
               <MdColorLens size={25} />
               {toggleColorPallete && (
                 <ColorPallete
-                  colorPalleteHandler={
-                    colorPalleteHandler
-                  }
+                  colorPalleteHandler={colorPalleteHandler}
                 />
               )}
             </span>
@@ -176,12 +164,8 @@ const CreateNoteCard = () => {
                 <span className="absolute top-1 left-8">
                   <LabelInput
                     label={noteData.label}
-                    labelChangeHandler={
-                      labelHandler
-                    }
-                    toggleHandler={
-                      toggleLabelFunc
-                    }
+                    labelChangeHandler={labelHandler}
+                    toggleHandler={toggleLabelFunc}
                   />
                 </span>
               )}
