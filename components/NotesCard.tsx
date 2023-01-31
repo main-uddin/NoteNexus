@@ -54,7 +54,8 @@ const NotesCard = ({
     <div
       className={`relative h-fit rounded-md border border-gray-400 ${noteData.color} p-3 pb-14 shadow-sm`}
     >
-      {noteData.pinned ? (
+      {noteData.trash ||
+      noteData.archive ? null : noteData.pinned ? (
         <span
           className="absolute top-3 right-3 hover:cursor-pointer"
           onClick={() => {
@@ -102,27 +103,31 @@ const NotesCard = ({
           </span>
         </div>
         <div className="flex gap-4">
-          <span
-            className="rounded-md p-1 hover:cursor-pointer hover:bg-light-background"
-            onClick={toggleUpdateNoteCardFunc}
-          >
-            <MdEdit size={25} />
-          </span>
-          <span
-            className="rounded-md p-1 hover:cursor-pointer hover:bg-light-background"
-            onClick={() => {
-              setToggleColor((prev) => !prev);
-            }}
-          >
-            <MdColorLens size={25} />
-            {toggleColor && (
-              <UpdateColorPallete
-                noteData={noteData}
-                userNotesData={userNotesData}
-              />
-            )}
-          </span>
-          {noteData.archive ? (
+          {noteData.trash || noteData.archive ? null : (
+            <span
+              className="rounded-md p-1 hover:cursor-pointer hover:bg-light-background"
+              onClick={toggleUpdateNoteCardFunc}
+            >
+              <MdEdit size={25} />
+            </span>
+          )}
+          {noteData.trash || noteData.archive ? null : (
+            <span
+              className="rounded-md p-1 hover:cursor-pointer hover:bg-light-background"
+              onClick={() => {
+                setToggleColor((prev) => !prev);
+              }}
+            >
+              <MdColorLens size={25} />
+              {toggleColor && (
+                <UpdateColorPallete
+                  noteData={noteData}
+                  userNotesData={userNotesData}
+                />
+              )}
+            </span>
+          )}
+          {noteData.trash ? null : noteData.archive ? (
             <span
               className="rounded-md p-1 hover:cursor-pointer hover:bg-light-background"
               onClick={() => {
@@ -151,7 +156,7 @@ const NotesCard = ({
               <MdArchive size={25} />
             </span>
           )}
-          {noteData.trash ? (
+          {noteData.archive ? null : noteData.trash ? (
             <span
               className="rounded-md p-1 hover:cursor-pointer hover:bg-light-background"
               onClick={() => {
