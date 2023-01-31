@@ -3,12 +3,12 @@ import { useUpdateDoc } from "../hooks";
 import { Note } from "../types";
 
 const colors = [
-  { id: "qdw", color: "bg-gray-600" },
-  { id: "qdwy", color: "bg-gray-800" },
-  { id: "qdwd", color: "bg-slate-600" },
-  { id: "qdwx", color: "bg-purple-500" },
-  { id: "qdwq", color: "bg-violet-600" },
-  { id: "qdwry", color: "bg-rose-500" },
+  { id: "qdw", color: "bg-rose-100" },
+  { id: "qdwy", color: "bg-pink-100" },
+  { id: "qdwd", color: "bg-purple-100" },
+  { id: "qdwx", color: "bg-teal-100" },
+  { id: "qdwq", color: "bg-green-100" },
+  { id: "qdwry", color: "bg-yellow-100" },
 ];
 
 const UpdateColorPallete = ({
