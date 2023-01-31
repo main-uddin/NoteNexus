@@ -172,7 +172,7 @@ const UpdateNoteCard = ({
           </div>
           <div className="flex items-center space-x-2">
             <button
-              className="rounded-md border border-gray-600 p-1 px-2"
+              className="rounded-md border border-gray-600 bg-light-primary p-1 px-2 text-white"
               onClick={() => {
                 addNote({
                   notes: userNoteData.map((note) => {
@@ -188,7 +188,7 @@ const UpdateNoteCard = ({
               UPDATE NOTE
             </button>
             <button
-              className="rounded-md border border-gray-600 p-1 px-2"
+              className="rounded-md border border-gray-600 bg-[#EDE9FE] p-1 px-2"
               onClick={closeUpdateNoteCard}
             >
               CANCEL
