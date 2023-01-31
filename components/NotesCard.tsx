@@ -6,6 +6,8 @@ import {
   MdDelete,
   MdPushPin,
   MdEdit,
+  MdUnarchive,
+  MdRestoreFromTrash,
   MdLabel,
 } from "react-icons/md";
 import { useState } from "react";
@@ -132,7 +134,7 @@ const NotesCard = ({
                 });
               }}
             >
-              <MdArchive size={25} />
+              <MdUnarchive size={25} />
             </span>
           ) : (
             <span
@@ -161,7 +163,7 @@ const NotesCard = ({
                 });
               }}
             >
-              <MdDelete size={25} />
+              <MdRestoreFromTrash size={25} />
             </span>
           ) : (
             <span
