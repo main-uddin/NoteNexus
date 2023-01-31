@@ -21,10 +21,6 @@ const UpdateNoteCard = ({
   userNoteData: Note[];
   closeUpdateNoteCard: () => void;
 }) => {
-  const { closeCreateNote } = useToggleNoteStore(
-    (store) => store
-  );
-
   const [toggleColorPallete, setToggleColorPallete] =
     useState<boolean>(false);
 
@@ -35,17 +31,9 @@ const UpdateNoteCard = ({
     mutate: addNote,
     isLoading,
     isError,
-  } = useUpdateDoc("users", closeCreateNote);
+  } = useUpdateDoc("users", closeUpdateNoteCard);
 
   const [noteData, setNoteData] = useState<Note>(notesData);
-
-  const updatedObj = {
-    ...noteData,
-    title: noteData.title
-      ? noteData.title
-      : "untitled note",
-    note: noteData.note ? noteData.note : "Empty Note",
-  };
 
   const inputHandler = (e: React.BaseSyntheticEvent) => {
     const { name, value } = e.target;
@@ -172,6 +160,7 @@ const UpdateNoteCard = ({
                 className="border border-gray-600 p-1"
                 name="priority"
                 id=""
+                value={noteData.priority}
                 onChange={inputHandler}
               >
                 <option>Choose Priority</option>
@@ -186,7 +175,13 @@ const UpdateNoteCard = ({
               className="rounded-md border border-gray-600 p-1 px-2"
               onClick={() => {
                 addNote({
-                  notes: arrayUnion(updatedObj),
+                  notes: userNoteData.map((note) => {
+                    if (note.id === noteData.id) {
+                      return noteData;
+                    } else {
+                      return note;
+                    }
+                  }),
                 });
               }}
             >
