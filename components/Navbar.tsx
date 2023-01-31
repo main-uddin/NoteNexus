@@ -20,8 +20,7 @@ const Navbar = (): React.ReactElement => {
     (store: any) => store.authStatus
   );
 
-  const { darkMode, toggleTheme } =
-    useDarkTheme();
+  const { darkMode, toggleTheme } = useDarkTheme();
 
   const { openCreateNote } = useToggleNoteStore(
     (store) => store
@@ -49,7 +48,7 @@ const Navbar = (): React.ReactElement => {
         </Link>
       </div>
       <ul className="flex gap-5">
-        {loading
+        {loading || router.pathname !== "/notes"
           ? null
           : authStatus && (
               <li
@@ -66,9 +65,7 @@ const Navbar = (): React.ReactElement => {
             onClick={() => {
               removeAuth();
               router.push("/");
-              toast.success(
-                "user logged out successfully"
-              );
+              toast.success("user logged out successfully");
             }}
           >
             <MdLogout size={25} />
