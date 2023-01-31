@@ -22,6 +22,7 @@ import {
 } from "../utility";
 import UpdateColorPallete from "./UpdateColorPallete";
 import UpdateNoteCard from "./UpdateNoteCard";
+import { toast } from "react-hot-toast";
 
 const NotesCard = ({
   noteData,
@@ -62,6 +63,7 @@ const NotesCard = ({
             addRemovePin({
               notes: togglePin(noteData, userNotesData),
             });
+            toast.success("removed from pinned notes");
           }}
         >
           <MdPushPin size={25} />
@@ -73,6 +75,7 @@ const NotesCard = ({
             addRemovePin({
               notes: togglePin(noteData, userNotesData),
             });
+            toast.success("added to pinned notes");
           }}
         >
           <MdOutlinePushPin size={25} />
@@ -137,6 +140,7 @@ const NotesCard = ({
                     userNotesData
                   ),
                 });
+                toast.success("note moved to notes");
               }}
             >
               <MdUnarchive size={25} />
@@ -151,6 +155,7 @@ const NotesCard = ({
                     userNotesData
                   ),
                 });
+                toast.success("note moved to archived");
               }}
             >
               <MdArchive size={25} />
@@ -166,6 +171,7 @@ const NotesCard = ({
                     userNotesData
                   ),
                 });
+                toast.success("note restored");
               }}
             >
               <MdRestoreFromTrash size={25} />
@@ -180,6 +186,7 @@ const NotesCard = ({
                     userNotesData
                   ),
                 });
+                toast.success("note moved to trash");
               }}
             >
               <MdDelete size={25} />
