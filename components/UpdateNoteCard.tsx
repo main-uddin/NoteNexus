@@ -5,6 +5,7 @@ import {
   MdPushPin,
   MdLabel,
   MdOutlinePushPin,
+  MdOutlineLabel,
 } from "react-icons/md";
 import { useUpdateDoc } from "../hooks";
 import { useToggleNoteStore } from "../store";
@@ -118,8 +119,8 @@ const UpdateNoteCard = ({
         </div>
         <div className="mt-3 px-2">
           {noteData.label && !toggleLabel && (
-            <span className="border border-gray-600 px-2 py-1">
-              {noteData.label}
+            <span className="flex max-w-fit items-center gap-1 rounded-md border border-gray-600 bg-gray-200 px-2">
+              <MdOutlineLabel /> {noteData.label}
             </span>
           )}
         </div>
