@@ -8,7 +8,9 @@ import {
   MdEdit,
   MdUnarchive,
   MdRestoreFromTrash,
+  MdLabelOutline,
   MdLabel,
+  MdEqualizer,
 } from "react-icons/md";
 import { useState } from "react";
 import ColorPallete from "./ColorPallete";
@@ -88,13 +90,12 @@ const NotesCard = ({
         <p className="font-normal">{noteData.note}</p>
 
         <div className="flex gap-3">
-          {
-            <span className="flex items-center gap-1 rounded-md border border-gray-400 bg-light-background px-3 text-sm font-medium">
-              {noteData.label ? noteData.label : "no label"}
-            </span>
-          }
-          <span className="rounded-md border border-gray-400 bg-light-background p-1 px-2 text-sm font-medium">
-            {noteData.priority}
+          <span className="flex items-center gap-1 rounded-md border border-gray-400 bg-light-background px-2 text-sm font-medium">
+            <MdLabelOutline />{" "}
+            {noteData.label ? noteData.label : "no label"}
+          </span>
+          <span className="flex items-center gap-1 rounded-md border border-gray-400 bg-light-background p-1 px-2 text-sm font-medium">
+            <MdEqualizer /> {noteData.priority}
           </span>
         </div>
       </div>
