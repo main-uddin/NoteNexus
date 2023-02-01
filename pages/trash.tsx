@@ -12,8 +12,6 @@ const TrashPage = (): React.ReactElement => {
 
   if (isUserDataLoading) return <h1>loading...</h1>;
 
-  console.log(userData);
-
   return (
     <>
       <Head>
@@ -31,6 +29,7 @@ const TrashPage = (): React.ReactElement => {
               .filter((x: Note) => !x.archive && x.trash)
               .map((x: Note) => (
                 <NotesCard
+                  key={x.id}
                   noteData={x}
                   userNotesData={userData.notes}
                 />

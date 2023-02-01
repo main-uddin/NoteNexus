@@ -61,6 +61,7 @@ const NotesPage = (): React.ReactElement => {
                 )
                 .map((x: Note) => (
                   <NotesCard
+                    key={x.id}
                     noteData={x}
                     userNotesData={userData.notes}
                   />
