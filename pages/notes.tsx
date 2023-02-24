@@ -10,6 +10,7 @@ import UpdateCreateNoteCard from "../components/UpdateNoteCard";
 import { notesData } from "../data";
 import { useGetDoc } from "../hooks";
 import {
+  useAuthStore,
   useFilterStore,
   useToggleNoteStore,
 } from "../store";
@@ -20,10 +21,16 @@ import {
   filterBySearchKey,
   sortByTime,
 } from "../utility";
+import { useEffect } from "react";
+import { useRouter } from "next/router";
 
 const NotesPage = (): React.ReactElement => {
   const { openCreateNoteModal } = useToggleNoteStore(
     (store) => store
+  );
+
+  const authStatus = useAuthStore(
+    (store: any) => store.authStatus
   );
 
   const {
@@ -38,6 +45,14 @@ const NotesPage = (): React.ReactElement => {
     filter_by_label,
     filter_by_search,
   } = useFilterStore((store) => store);
+
+  const router = useRouter();
+
+  useEffect(() => {
+    if (!authStatus) {
+      router.push("/");
+    }
+  }, [authStatus]);
 
   if (isUserDataLoading) return <h1>loading...</h1>;
 
