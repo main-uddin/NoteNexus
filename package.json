@@ -24,9 +24,11 @@
     "react-icons": "^4.7.1",
     "react-spinners": "^0.13.8",
     "typescript": "4.9.4",
-    "zustand": "^4.1.5"
+    "zustand": "^4.1.5",
+    "json5": ">=1.0.2"
   },
   "devDependencies": {
+    "json5": ">=1.0.2",
     "autoprefixer": "^10.4.13",
     "postcss": "^8.4.20",
     "prettier": "^2.8.1",
