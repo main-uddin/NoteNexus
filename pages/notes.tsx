@@ -23,6 +23,7 @@ import {
 } from "../utility";
 import { useEffect } from "react";
 import { useRouter } from "next/router";
+import { ClipLoader } from "react-spinners";
 
 const NotesPage = (): React.ReactElement => {
   const { openCreateNoteModal } = useToggleNoteStore(
@@ -54,7 +55,12 @@ const NotesPage = (): React.ReactElement => {
     }
   }, [authStatus]);
 
-  if (isUserDataLoading) return <h1>loading...</h1>;
+  if (isUserDataLoading)
+    return (
+      <div className="flex h-screen w-full items-center justify-center">
+        <ClipLoader size={30} />
+      </div>
+    );
 
   return (
     <>
