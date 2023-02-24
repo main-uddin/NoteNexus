@@ -48,7 +48,7 @@ const NotesPage = (): React.ReactElement => {
       </Head>
       <SidebarLayout>
         <div className="mx-auto mt-24 pb-8 sm:w-11/12 md:w-4/5 lg:w-2/4">
-          <SearchbarFilter />
+          <SearchbarFilter userData={userData} />
           <div className="mt-5 space-y-5">
             <h1 className="text-center font-semibold">
               Pinned Notes

@@ -3,7 +3,11 @@ import { MdFilterList } from "react-icons/md";
 import { useFilterStore } from "../store";
 import Filter from "./Filter";
 
-const SearchbarFilter = () => {
+const SearchbarFilter = ({
+  userData,
+}: {
+  userData: any;
+}) => {
   const [toggleFilter, setToggleFilter] =
     useState<boolean>(false);
 
@@ -37,7 +41,7 @@ const SearchbarFilter = () => {
       >
         <MdFilterList size={25} />
       </div>
-      {toggleFilter && <Filter />}
+      {toggleFilter && <Filter userData={userData} />}
     </div>
   );
 };
