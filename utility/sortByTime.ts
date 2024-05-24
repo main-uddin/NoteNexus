@@ -5,11 +5,11 @@ const sortByTime = (
   notesData: Note[]
 ) => {
   if (sort_by_time == "New To Old") {
-    return notesData.sort(
+    return notesData?.sort(
       (a, b) => b.createdAt - a.createdAt
     );
   } else {
-    return notesData.sort(
+    return notesData?.sort(
       (a, b) => a.createdAt - b.createdAt
     );
   }

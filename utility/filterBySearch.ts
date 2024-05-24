@@ -4,7 +4,7 @@ const filterBySearchKey = (
   filter_by_search: string,
   notesData: Note[]
 ) => {
-  return notesData.filter(
+  return notesData?.filter(
     (x) =>
       x.note
         .toLowerCase()

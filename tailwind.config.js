@@ -25,7 +25,7 @@ module.exports = {
         light: {
           background: "#f1f5f9",
           foreground: "#f8fafc",
-          primary: "#5348C7",
+          primary: "#104E8F",
           text: "242331",
         },
       },

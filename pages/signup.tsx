@@ -88,7 +88,7 @@ const Signup = (): React.ReactElement => {
   return (
     <div className="flex h-screen items-center justify-center">
       <Head>
-        <title>Sign Up | Notation</title>
+        <title>Sign Up | NoteNexus</title>
       </Head>
       <form onSubmit={handleSubmit}>
         <div className="m-auto h-fit w-96 space-y-2 rounded-md border border-gray-300 bg-slate-50 p-6 shadow-md md:mt-16">
